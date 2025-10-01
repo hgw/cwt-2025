@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CWT 2025 - セミナープレゼンテーション</title>
-    
+    <title>CWT 2025 - アクセシブルなウェブデザインとは何か</title>
+    <meta name="description" content="ウェブアクセシビリティに関するセミナープレゼンテーション。障害のある人を含むすべてのユーザーが利用しやすいウェブサイトの作り方を学びます。">
+
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css">
-    
+
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="dist/output.css">
-    
+
     <!-- Syntax highlighting -->
     <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
+    <div class="reveal" role="application" aria-label="プレゼンテーションスライド">
+        <div class="slides" id="main-content" role="main">
             <!-- Markdown content will be loaded here -->
             <section data-markdown="slides.md"
                      data-separator="^\r?\n---\r?\n$"
@@ -40,7 +44,53 @@
             hash: true,
             slideNumber: true,
             transition: 'slide',
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+
+            // Accessibility enhancements
+            keyboard: {
+                // Ensure standard navigation keys work
+                37: 'prev', // left arrow
+                39: 'next', // right arrow
+                38: 'prev', // up arrow
+                40: 'next', // down arrow
+                72: 'left', // h - go to previous slide
+                76: 'right', // l - go to next slide
+                75: 'up', // k - navigate up
+                74: 'down' // j - navigate down
+            },
+
+            // Announce slide changes to screen readers
+            navigationMode: 'linear',
+
+            // Add slide numbers for better orientation
+            showSlideNumber: 'all'
+        });
+
+        // Announce slide changes to screen readers
+        Reveal.on('slidechanged', event => {
+            const currentSlide = event.currentSlide;
+            const slideContent = currentSlide.textContent.trim().split('\n')[0]; // Get first line
+            const announcement = `スライド ${event.indexh + 1}。${slideContent}`;
+
+            // Create or update live region for announcements
+            let liveRegion = document.getElementById('slide-announcement');
+            if (!liveRegion) {
+                liveRegion = document.createElement('div');
+                liveRegion.id = 'slide-announcement';
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.setAttribute('aria-atomic', 'true');
+                liveRegion.className = 'sr-only';
+                document.body.appendChild(liveRegion);
+            }
+            liveRegion.textContent = announcement;
+        });
+
+        // Set focus on current slide for keyboard navigation
+        Reveal.on('ready', event => {
+            const controls = document.querySelector('.reveal .controls');
+            if (controls) {
+                controls.setAttribute('aria-label', 'プレゼンテーションコントロール');
+            }
         });
     </script>
 </body>

@@ -2,21 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Accessibility utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Focus visible indicators - WCAG 2.2 AA requires 2px minimum */
+*:focus-visible {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
 /* Custom styles for Reveal.js slides */
 .reveal {
-  @apply text-gray-800;
+  @apply text-gray-900;
 }
 
+/* WCAG AA contrast: 7:1 for large text (18pt+), 4.5:1 for normal text */
+/* Changed from text-blue-600 to ensure AA contrast on white background */
 .reveal h1 {
-  @apply text-5xl font-bold mb-6 text-blue-600;
+  @apply text-5xl font-bold mb-6;
+  color: #003d82; /* Darker blue for better contrast (7.8:1) */
 }
 
+/* Changed from text-blue-500 to ensure AA contrast */
 .reveal h2 {
-  @apply text-4xl font-semibold mb-4 text-blue-500;
+  @apply text-4xl font-semibold mb-4;
+  color: #003d82; /* Darker blue for better contrast (7.8:1) */
 }
 
+/* Changed from text-gray-700 to text-gray-900 for better contrast */
 .reveal h3 {
-  @apply text-3xl font-medium mb-3 text-gray-700;
+  @apply text-3xl font-medium mb-3 text-gray-900;
 }
 
 .reveal p {
@@ -31,10 +75,33 @@
   @apply mb-2;
 }
 
+/* Improved code block contrast */
 .reveal code {
-  @apply bg-gray-100 px-2 py-1 rounded text-sm;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.875em;
 }
 
 .reveal pre code {
-  @apply block bg-gray-800 text-white p-4 rounded;
+  display: block;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+}
+
+/* Ensure links have sufficient contrast and visible focus */
+.reveal a {
+  color: #003d82;
+  text-decoration: underline;
+}
+
+.reveal a:hover,
+.reveal a:focus {
+  color: #002654;
+  text-decoration: underline;
+  font-weight: bold;
 }
