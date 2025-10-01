@@ -1,1 +1,58 @@
 # cwt-2025
+
+セミナープレゼンテーションスライドシステム
+
+## 技術スタック
+
+- **Markdown**: 原稿管理
+- **HTML**: 表示出力
+- **Reveal.js**: プレゼンテーションフレームワーク
+- **Tailwind CSS**: スタイリング
+
+## セットアップ
+
+```bash
+# 依存関係のインストール
+npm install
+
+# Tailwind CSSのビルド
+npm run build:css
+```
+
+## 使い方
+
+1. `slides.md` でプレゼンテーションの内容を編集
+2. `npm run build:css` でスタイルをビルド
+3. ブラウザで `index.html` を開いてプレゼンテーションを表示
+
+### ライブリロード（開発時）
+
+```bash
+# CSSの変更を監視
+npm run watch:css
+
+# 別のターミナルでローカルサーバーを起動
+npm run serve
+```
+
+## ファイル構成
+
+```
+cwt-2025/
+├── index.html           # HTMLプレゼンテーション
+├── slides.md            # Markdown原稿
+├── package.json         # 依存関係管理
+├── tailwind.config.js   # Tailwind設定
+├── src/
+│   └── input.css        # Tailwindスタイルソース
+└── dist/
+    └── output.css       # コンパイル済みCSS
+```
+
+## プレゼンテーション操作
+
+- **→ / Space**: 次のスライド
+- **← / Backspace**: 前のスライド
+- **ESC / O**: スライド一覧表示
+- **F**: フルスクリーンモード
+- **S**: スピーカーノート表示
