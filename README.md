@@ -42,14 +42,13 @@ npm run build:css
 2. `npm run build:css` でスタイルをビルド
 3. ブラウザで `index.html` を開いてプレゼンテーションを表示
 
-### ライブリロード（開発時）
+### 開発サーバー（ライブリロード）
 
 ```bash
-# CSSの変更を監視
-npm run watch:css
-
-# 別のターミナルでローカルサーバーを起動
-npm run serve
+# 開発サーバーを起動（推奨）
+npm run dev
+# http://localhost:8000 で起動
+# CSS、HTML、MDファイルの変更を自動リロード
 ```
 
 ## ファイル構成

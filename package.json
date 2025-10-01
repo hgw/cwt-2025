@@ -5,12 +5,20 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
     "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "serve": "npx serve -p 8000"
+    "serve": "npx serve -p 8000",
+    "browser-sync": "browser-sync start --server --port 8000 --files 'dist/*.css, *.html, *.md' --no-notify --no-open",
+    "dev": "npm-run-all --parallel watch:css browser-sync"
   },
-  "keywords": ["reveal.js", "tailwind", "presentation"],
+  "keywords": [
+    "reveal.js",
+    "tailwind",
+    "presentation"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "npm-run-all": "^4.1.5",
     "tailwindcss": "^3.4.0"
   },
   "dependencies": {
