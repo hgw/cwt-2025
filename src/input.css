@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Reveal.js slides */
+.reveal {
+  @apply text-gray-800;
+}
+
+.reveal h1 {
+  @apply text-5xl font-bold mb-6 text-blue-600;
+}
+
+.reveal h2 {
+  @apply text-4xl font-semibold mb-4 text-blue-500;
+}
+
+.reveal h3 {
+  @apply text-3xl font-medium mb-3 text-gray-700;
+}
+
+.reveal p {
+  @apply text-xl mb-4;
+}
+
+.reveal ul {
+  @apply text-left;
+}
+
+.reveal li {
+  @apply mb-2;
+}
+
+.reveal code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm;
+}
+
+.reveal pre code {
+  @apply block bg-gray-800 text-white p-4 rounded;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "cwt-2025",
+  "version": "1.0.0",
+  "description": "Seminar presentation slides using Reveal.js and Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "serve": "npx serve -p 8000"
+  },
+  "keywords": ["reveal.js", "tailwind", "presentation"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "reveal.js": "^5.0.0"
+  }
+}
