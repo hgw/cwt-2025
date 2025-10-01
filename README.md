@@ -2,12 +2,21 @@
 
 セミナープレゼンテーションスライドシステム
 
+## デモ
+
+プレゼンテーションは GitHub Pages で公開されています：
+**https://hgw.github.io/cwt-2025/**
+
+main ブランチへの push で自動的にデプロイされます。
+
 ## 技術スタック
 
 - **Markdown**: 原稿管理
 - **HTML**: 表示出力
 - **Reveal.js**: プレゼンテーションフレームワーク
 - **Tailwind CSS**: スタイリング
+- **GitHub Actions**: 自動デプロイ
+- **GitHub Pages**: ホスティング
 
 ## セットアップ
 
@@ -56,3 +65,12 @@ cwt-2025/
 - **ESC / O**: スライド一覧表示
 - **F**: フルスクリーンモード
 - **S**: スピーカーノート表示
+
+## デプロイ
+
+main ブランチへの push で GitHub Actions が自動的に：
+1. npm 依存関係をインストール
+2. Tailwind CSS をビルド
+3. GitHub Pages にデプロイ
+
+デプロイ状況は [Actions タブ](../../actions) で確認できます。
