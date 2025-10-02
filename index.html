@@ -6,92 +6,135 @@
     <title>CWT 2025 - アクセシブルなウェブデザインとは何か</title>
     <meta name="description" content="ウェブアクセシビリティに関するセミナープレゼンテーション。障害のある人を含むすべてのユーザーが利用しやすいウェブサイトの作り方を学びます。">
 
-    <!-- Reveal.js CSS -->
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css">
-
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="dist/output.css">
 
     <!-- Syntax highlighting -->
-    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body>
     <!-- Skip to content link -->
     <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
 
-    <div class="reveal" role="application" aria-label="プレゼンテーションスライド">
-        <div class="slides" id="main-content" role="main">
-            <!-- Markdown content will be loaded here -->
-            <section data-markdown="slides.md"
-                     data-separator="^\r?\n---\r?\n$"
-                     data-separator-vertical="^\r?\n--\r?\n$"
-                     data-separator-notes="^Note:"
-                     data-charset="utf-8">
-            </section>
-        </div>
-    </div>
+    <!-- Slide progress indicator -->
+    <nav aria-label="スライド進行状況" class="slide-progress">
+        <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </nav>
 
-    <!-- Reveal.js JavaScript -->
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
-    <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <main id="main-content" class="presentation-container" role="main">
+        <!-- Slides will be dynamically loaded here -->
+    </main>
+
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <script>
-        // Initialize Reveal.js
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true,
-            transition: 'slide',
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-
-            // Accessibility enhancements
-            keyboard: {
-                // Ensure standard navigation keys work
-                37: 'prev', // left arrow
-                39: 'next', // right arrow
-                38: 'prev', // up arrow
-                40: 'next', // down arrow
-                72: 'left', // h - go to previous slide
-                76: 'right', // l - go to next slide
-                75: 'up', // k - navigate up
-                74: 'down' // j - navigate down
-            },
-
-            // Announce slide changes to screen readers
-            navigationMode: 'linear',
-
-            // Add slide numbers for better orientation
-            showSlideNumber: 'all'
+        // Configure marked for accessibility
+        marked.setOptions({
+            breaks: true,
+            gfm: true
         });
+
+        // Load and parse markdown
+        async function loadSlides() {
+            try {
+                const response = await fetch('slides.md');
+                const markdown = await response.text();
+
+                // Split by horizontal separator (---)
+                const slides = markdown.split(/\r?\n---\r?\n/).filter(s => s.trim());
+
+                const container = document.querySelector('.presentation-container');
+
+                slides.forEach((slideContent, index) => {
+                    const section = document.createElement('section');
+                    section.className = 'slide';
+                    section.id = `slide-${index + 1}`;
+                    section.setAttribute('aria-label', `スライド ${index + 1} / ${slides.length}`);
+
+                    // Parse markdown to HTML
+                    const html = marked.parse(slideContent.trim());
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'slide-content';
+                    contentDiv.innerHTML = html;
+
+                    section.appendChild(contentDiv);
+                    container.appendChild(section);
+                });
+
+                // Apply syntax highlighting
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightElement(block);
+                });
+
+                // Setup scroll progress
+                setupScrollProgress(slides.length);
+
+                // Setup intersection observer for slide announcements
+                setupSlideObserver();
+
+            } catch (error) {
+                console.error('Failed to load slides:', error);
+                document.querySelector('.presentation-container').innerHTML =
+                    '<div class="error">スライドの読み込みに失敗しました。</div>';
+            }
+        }
+
+        // Setup scroll progress indicator
+        function setupScrollProgress(totalSlides) {
+            const progressBar = document.getElementById('progress-bar');
+
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const progress = (scrolled / documentHeight) * 100;
+
+                progressBar.style.width = `${progress}%`;
+                progressBar.setAttribute('aria-valuenow', Math.round(progress));
+            });
+        }
 
         // Announce slide changes to screen readers
-        Reveal.on('slidechanged', event => {
-            const currentSlide = event.currentSlide;
-            const slideContent = currentSlide.textContent.trim().split('\n')[0]; // Get first line
-            const announcement = `スライド ${event.indexh + 1}。${slideContent}`;
+        function setupSlideObserver() {
+            // Create live region for announcements
+            const liveRegion = document.createElement('div');
+            liveRegion.id = 'slide-announcement';
+            liveRegion.setAttribute('aria-live', 'polite');
+            liveRegion.setAttribute('aria-atomic', 'true');
+            liveRegion.className = 'sr-only';
+            document.body.appendChild(liveRegion);
 
-            // Create or update live region for announcements
-            let liveRegion = document.getElementById('slide-announcement');
-            if (!liveRegion) {
-                liveRegion = document.createElement('div');
-                liveRegion.id = 'slide-announcement';
-                liveRegion.setAttribute('aria-live', 'polite');
-                liveRegion.setAttribute('aria-atomic', 'true');
-                liveRegion.className = 'sr-only';
-                document.body.appendChild(liveRegion);
-            }
-            liveRegion.textContent = announcement;
-        });
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
 
-        // Set focus on current slide for keyboard navigation
-        Reveal.on('ready', event => {
-            const controls = document.querySelector('.reveal .controls');
-            if (controls) {
-                controls.setAttribute('aria-label', 'プレゼンテーションコントロール');
-            }
-        });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const slideLabel = entry.target.getAttribute('aria-label');
+                        const firstHeading = entry.target.querySelector('h1, h2, h3');
+                        const headingText = firstHeading ? firstHeading.textContent : '';
+                        liveRegion.textContent = `${slideLabel}。${headingText}`;
+                    }
+                });
+            }, options);
+
+            // Observe all slides after a short delay to ensure they're loaded
+            setTimeout(() => {
+                document.querySelectorAll('.slide').forEach(slide => {
+                    observer.observe(slide);
+                });
+            }, 100);
+        }
+
+        // Load slides on page load
+        document.addEventListener('DOMContentLoaded', loadSlides);
     </script>
 </body>
 </html>
