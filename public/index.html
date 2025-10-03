@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWT 2025 - アクセシブルなウェブデザインとは何か</title>
+    <meta name="description" content="ウェブアクセシビリティに関するセミナープレゼンテーション。障害のある人を含むすべてのユーザーが利用しやすいウェブサイトの作り方を学びます。">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="/assets/css/index.css">
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+
+<body>
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
+    <main id="main-content" class="presentation-container">
+        <section class="slide">
+            <div class="slide-content">
+                <h1>タイトル</h1>
+                <p>アクセシブルなウェブデザインとは何か</p>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>はじめに</h2>
+                <ul>
+                    <li>自己紹介</li>
+                    <li>障害のある人とウェブサイト利用</li>
+                    <li>アクセシブルなウェブサイトとは？</li>
+                    <li>今日からはじめるアクセシビリティ向上</li>
+                    <li>近未来のウェブアクセシビリティを考える</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>今日のゴール</h2>
+                <ol>
+                    <li>ウェブサイトのユーザーを想像する</li>
+                    <li>ウェブアクセシビリティを広義に捉える</li>
+                    <li>向上への取り組みの手がかりを掴む</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h1>自己紹介</h1>
+                <ul>
+                    <li>伊敷政英 (アクセシビリティ・コンサルタント)</li>
+                    <li>萩原俊矢 (ウェブディレクター、デザイナー、エンジニア)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>伊敷政英 (いしき・まさひで)</h2>
+                <ul>
+                    <li>アクセシビリティ・コンサルタント</li>
+                    <li>障害者専門クラウドソーシングサービス「サニーバンク」のアドバイザー</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>伊敷さんスライド</h2>
+                <ul>
+                    <li>アイテム</li>
+                    <li>アイテム</li>
+                    <li>アイテム</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>萩原俊矢 (はぎわら・しゅんや)</h2>
+                <ul>
+                    <li>ウェブディレクター、プログラマー、デザイナー</li>
+                    <li>株式会社 Studio Autumn 代表</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>一人でつくる → みんなでつくる</h2>
+                <img src="/assets/img/illust-11-1-1600x1067.jpg" alt="一人でつくる → みんなでつくる">
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>アートプロジェクトに取り組む</h2>
+                <ul>
+                    <li>トランスブックスの記録写真</li>
+                    <li>インターネットヤミ市の記録写真</li>
+                    <li>セミトランスペアレント・デザイン時代の YCAM のインスタレーションなど</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>多様なユーザーとともに作る</h2>
+                <ul>
+                    <li>TARLのエッセイ「わたアク」のイラスト</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>イントロダクション</h2>
+                <p>このプレゼンテーションは以下の技術を使用しています：</p>
+                <ul>
+                    <li>Markdown で原稿を管理</li>
+                    <li>HTML で表示</li>
+                    <li>Reveal.js でプレゼンテーション</li>
+                    <li>Tailwind CSS でスタイリング</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Reveal.js とは</h2>
+                <ul>
+                    <li>ウェブベースのプレゼンテーションフレームワーク</li>
+                    <li>HTML/CSS/JavaScriptで作成</li>
+                    <li>レスポンシブデザイン対応</li>
+                    <li>キーボードナビゲーション</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Tailwind CSS とは</h2>
+                <ul>
+                    <li>ユーティリティファーストのCSSフレームワーク</li>
+                    <li>高速な開発が可能</li>
+                    <li>カスタマイズ性が高い</li>
+                    <li>レスポンシブデザインが簡単</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>システム構成</h2>
+                <pre><code>cwt-2025/
+├── slides.md          # Markdown 原稿
+├── index.html         # HTML 表示
+├── src/
+│   └── input.css      # Tailwind スタイル
+└── dist/
+    └── output.css     # コンパイル済みCSS</code></pre>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>使い方</h2>
+                <ol>
+                    <li><code>npm install</code> - 依存関係のインストール</li>
+                    <li><code>npm run build:css</code> - CSSのビルド</li>
+                    <li>ブラウザで <code>index.html</code> を開く</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>まとめ</h2>
+                <ul>
+                    <li>Markdownで簡単に管理</li>
+                    <li>Reveal.jsで美しいプレゼンテーション</li>
+                    <li>Tailwind CSSで柔軟なスタイリング</li>
+                    <li>モダンなウェブ技術の活用</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="slide-content">
+                <h2>ありがとうございました</h2>
+                <p>質問はありますか？</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script>
+        // Add page numbers to all slides
+        function addPageNumbers() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            slides.forEach((slide, index) => {
+                const pageNum = document.createElement('p');
+                pageNum.className = 'page-num';
+                pageNum.textContent = `${index + 1} / ${totalSlides}`;
+                pageNum.setAttribute('aria-hidden', 'true');
+                slide.appendChild(pageNum);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply syntax highlighting
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+
+            addPageNumbers();
+        });
+    </script>
+</body>
+
+</html>

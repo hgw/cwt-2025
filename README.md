@@ -11,9 +11,7 @@ main ブランチへの push で自動的にデプロイされます。
 
 ## 技術スタック
 
-- **Markdown**: 原稿管理
-- **HTML**: 表示出力
-- **Reveal.js**: プレゼンテーションフレームワーク
+- **HTML**: プレゼンテーション原稿
 - **Tailwind CSS**: スタイリング
 - **GitHub Actions**: 自動デプロイ
 - **GitHub Pages**: ホスティング
@@ -38,9 +36,9 @@ npm run build:css
 
 ## 使い方
 
-1. `slides.md` でプレゼンテーションの内容を編集
+1. `public/index.html` でプレゼンテーションの内容を編集
 2. `npm run build:css` でスタイルをビルド
-3. ブラウザで `index.html` を開いてプレゼンテーションを表示
+3. ブラウザで `public/index.html` を開いてプレゼンテーションを表示
 
 ### 開発サーバー（ライブリロード）
 
@@ -48,30 +46,29 @@ npm run build:css
 # 開発サーバーを起動（推奨）
 npm run dev
 # http://localhost:8000 で起動
-# CSS、HTML、MDファイルの変更を自動リロード
+# CSS、HTMLファイルの変更を自動リロード
 ```
 
 ## ファイル構成
 
 ```
 cwt-2025/
-├── index.html           # HTMLプレゼンテーション
-├── slides.md            # Markdown原稿
-├── package.json         # 依存関係管理
-├── tailwind.config.js   # Tailwind設定
+├── public/              # 公開用ディレクトリ
+│   ├── index.html       # プレゼンテーション原稿（ここを編集）
+│   └── assets/
+│       └── css/
+│           └── index.css # ビルド済みCSS
 ├── src/
-│   └── input.css        # Tailwindスタイルソース
-└── dist/
-    └── output.css       # コンパイル済みCSS
+│   └── css/
+│       └── index.css    # Tailwindスタイルソース
+├── package.json         # 依存関係管理
+└── tailwind.config.js   # Tailwind設定
 ```
 
 ## プレゼンテーション操作
 
-- **→ / Space**: 次のスライド
-- **← / Backspace**: 前のスライド
-- **ESC / O**: スライド一覧表示
-- **F**: フルスクリーンモード
-- **S**: スピーカーノート表示
+- **↑↓ / Space**: スライド移動
+- **マウスホイール**: スクロール
 
 ## デプロイ
 
