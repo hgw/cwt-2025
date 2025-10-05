@@ -667,7 +667,8 @@ ol {
   line-height: 1.625;
 }
 
-.slide-content ul {
+.slide-content ul,
+.slide-content ol {
   text-align: left;
 }
 
@@ -675,6 +676,12 @@ ol {
   font-size: 2vw;
   margin-bottom: 0.5rem;
   line-height: 1.625;
+}
+
+.slide-content li ul,
+.slide-content li ol {
+  margin-left: 2em;
+  margin-top: 0.5em;
 }
 
 /* Improved code block contrast */

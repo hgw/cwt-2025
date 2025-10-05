@@ -97,13 +97,20 @@ ol {
   @apply mb-4 leading-relaxed;
 }
 
-.slide-content ul {
+.slide-content ul,
+.slide-content ol {
   @apply text-left;
 }
 
 .slide-content li {
   font-size: 2vw;
   @apply mb-2 leading-relaxed;
+}
+
+.slide-content li ul,
+.slide-content li ol {
+  margin-left: 2em;
+  margin-top: 0.5em;
 }
 
 /* Improved code block contrast */
