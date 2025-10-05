@@ -558,6 +558,16 @@ video {
   display: block;
 }
 
+ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+ol {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
 /* Skip link styling */
 
 .skip-link {
@@ -583,24 +593,6 @@ video {
 *:focus-visible {
   outline: 3px solid #0066cc;
   outline-offset: 2px;
-}
-
-/* Progress bar */
-
-.slide-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #e5e7eb;
-  z-index: 1000;
-}
-
-.slide-progress div {
-  height: 100%;
-  background: #003d82;
-  transition: width 0.1s ease;
 }
 
 /* Presentation container */
@@ -631,13 +623,13 @@ video {
   position: absolute;
   bottom: 1.5rem;
   right: 2rem;
-  font-size: 0.875rem;
+  font-size: 1.5vw;
   color: #6b7280;
   margin: 0;
 }
 
 .slide-content {
-  max-width: 1200px;
+  max-width: 85vw;
   width: 100%;
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
@@ -646,36 +638,33 @@ video {
 /* WCAG AA contrast: 7:1 for large text (18pt+), 4.5:1 for normal text */
 
 .slide-content h1 {
+  font-size: 4vw;
   margin-bottom: 1.5rem;
-  font-size: 3rem;
-  line-height: 1;
   font-weight: 700;
   color: #003d82;
   /* Darker blue for better contrast (7.8:1) */
 }
 
 .slide-content h2 {
+  font-size: 3.2vw;
   margin-bottom: 1rem;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
   font-weight: 600;
   color: #003d82;
   /* Darker blue for better contrast (7.8:1) */
 }
 
 .slide-content h3 {
+  font-size: 2.8vw;
   margin-bottom: 0.75rem;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
 .slide-content p {
+  font-size: 2vw;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 1.625;
 }
 
 .slide-content ul {
@@ -683,9 +672,9 @@ video {
 }
 
 .slide-content li {
+  font-size: 2vw;
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  line-height: 1.625;
 }
 
 /* Improved code block contrast */
