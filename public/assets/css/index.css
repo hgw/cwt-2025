@@ -638,7 +638,7 @@ ol {
 /* WCAG AA contrast: 7:1 for large text (18pt+), 4.5:1 for normal text */
 
 .slide-content h1 {
-  font-size: 4vw;
+  font-size: 4.5vw;
   margin-bottom: 1.5rem;
   font-weight: 700;
   color: #003d82;
@@ -646,7 +646,7 @@ ol {
 }
 
 .slide-content h2 {
-  font-size: 3.2vw;
+  font-size: 3.6vw;
   margin-bottom: 1rem;
   font-weight: 600;
   color: #003d82;
@@ -654,11 +654,17 @@ ol {
 }
 
 .slide-content h3 {
-  font-size: 2.8vw;
+  font-size: 2.9vw;
   margin-bottom: 0.75rem;
   font-weight: 500;
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+  color: #003d82;
+}
+
+.slide-content h4 {
+  font-size: 2.3vw;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+  color: #6b7280;
 }
 
 .slide-content p {

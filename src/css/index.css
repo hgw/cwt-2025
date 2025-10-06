@@ -76,20 +76,27 @@ ol {
 
 /* WCAG AA contrast: 7:1 for large text (18pt+), 4.5:1 for normal text */
 .slide-content h1 {
-  font-size: 4vw;
+  font-size: 4.5vw;
   @apply font-bold mb-6;
   color: #003d82; /* Darker blue for better contrast (7.8:1) */
 }
 
 .slide-content h2 {
-  font-size: 3.2vw;
+  font-size: 3.6vw;
   @apply font-semibold mb-4;
   color: #003d82; /* Darker blue for better contrast (7.8:1) */
 }
 
 .slide-content h3 {
-  font-size: 2.8vw;
-  @apply font-medium mb-3 text-gray-900;
+  font-size: 2.9vw;
+  @apply font-medium mb-3;
+  color: #003d82;
+}
+
+.slide-content h4 {
+  font-size: 2.3vw;
+  @apply font-normal mb-3;
+  color: #6b7280;
 }
 
 .slide-content p {
